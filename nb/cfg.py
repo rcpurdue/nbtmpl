@@ -53,6 +53,9 @@ class Const:
     This site is based on data downloaded from the following site on 2020-07-14:
     <a href="https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt"  # noqa
     target="_blank">Global Mean Estimates based on Land_and Ocean Data (NASA)</a>
+    <br>
+    The code behind this site is intended as a template for anyone wanting to develop similar appliations. Source code
+    is available <a href="https://github.com/rcpurdue/nbtmpl" target="_blank">here</a>.
     </p>'''
 
     # Data tab
