@@ -1,5 +1,5 @@
-# nbtmpl - Notebook-based App Template
-A Python code example for building web apps without writing HTML, CSS. and JavaScript.
+# nbtmpl - A Self-Conatined Web App Template using Python
+A code example for building web apps without writing HTML, CSS. and JavaScript.
 
 <table><tr><td width="14%">
     <img src="https://www.python.org/static/img/python-logo.png" alt="python logo">
@@ -86,8 +86,7 @@ NOTE: In the commands above:
  -  `nbtmpl1` = arbitrary name for the Docker image - use whatever you want
  -  `https://...` = repository URL - substitute your own when you customize the code
  -  `nbtmpl` = repo name (and, therefore, the name of the repo's directory) - change if customized
- -  `data` = relative path to the directory holding data files - change as needed
- -  `8866:8866` = connection port mapping within and out of container - change if needed
+ -  `8866:8866` = connection port mapping within and out of container - change if conflicts
 
 ### Upload container
 
