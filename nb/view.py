@@ -2,11 +2,11 @@
 # rcampbel@purdue.edu - 2020-07-14
 
 import sys
-import logging
 import ipywidgets as widgets
 from IPython.display import HTML, display, clear_output
 
 from nb.log import logger, log_handler
+
 
 """Store app-wide constants, including values and language text."""
 
@@ -119,15 +119,8 @@ figsize2: widgets.FloatSlider
 apply: widgets.Button
 
 
-def start(log=False):
+def start(show_log):
     """Build the user interface."""
-
-    # Optionally show additional info in log
-    if log:
-        log_handler.setLevel(logging.DEBUG)
-        logger.setLevel(logging.DEBUG)
-
-    # Create user interface
 
     # Send app's custom styles (CSS code) down to the browser
     display(HTML(filename=CSS_JS_HTML))
@@ -167,7 +160,7 @@ def start(log=False):
     # Optionally, display a widget that shows the log items
     # Log items always appear in Jupyter Lab's log.
     # However, this addl. log widget is useful in some contexts (e.g. HUBzero tools)
-    if log:
+    if show_log:
         display(log_handler.log_output_widget)
 
 

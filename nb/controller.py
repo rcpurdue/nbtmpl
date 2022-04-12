@@ -1,6 +1,7 @@
 # controller.py - Central logic for app
 # rcampbel@purdue.edu - 2020-07-14
 
+import logging
 import sys
 import traceback
 from IPython.display import display, clear_output, FileLink
@@ -9,14 +10,22 @@ from matplotlib import pyplot as plt
 
 from nb import model
 from nb import view
-from nb.log import logger
+from nb.log import logger, log_handler
 
 
 ctrl = sys.modules[__name__]
 
 
-def start():
+def start(debug=False):
     """Begin running the app."""
+
+    # Optionally show additional info in log
+    if debug:
+        log_handler.setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
+
+    model.start()  # Load data or prepare access to data
+    view.start(debug)  # Build user interface (specify "True" to show log under UI)
 
     # Show data preview
     with view.data_preview_out:
