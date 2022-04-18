@@ -47,7 +47,7 @@ def start(debug=False):
         raise
 
 
-def cb_fill_results_export(_):
+def when_fill_results_export(_):
     """React to user pressing button to download results."""
     try:
         # Create link for filter results
@@ -63,7 +63,7 @@ def cb_fill_results_export(_):
         raise
 
 
-def cb_apply_filter(_):
+def when_apply_filter(_):
     """React to apply filter button press."""
     try:
         view.filter_out_export.clear_output()
@@ -74,7 +74,7 @@ def cb_apply_filter(_):
         logger.debug('Exception while filtering data...\n'+traceback.format_exc())
 
 
-def cb_ndisp_changed(_):
+def when_ndisp_changed(_):
     """React to user changing result page size."""
     try:
         ctrl.refresh_filter_output()
@@ -82,7 +82,7 @@ def cb_ndisp_changed(_):
         logger.debug('Exception while changing number of out lines to display...\n'+traceback.format_exc())
 
 
-def cb_plot_type_selected(_):
+def when_plot_type_selected(_):
     """React to use requesting plot."""
     try:
 
@@ -104,7 +104,7 @@ def cb_plot_type_selected(_):
         plt.close()
 
 
-def cb_apply_plot_settings(_):
+def when_apply_plot_settings(_):
     """React to user applying settings"""
     try:
         jtplot.style(theme=view.theme.value,
