@@ -1,20 +1,20 @@
 # nbtmpl - A Self-Conatined Web App Template using Python
 A code example for building web apps without writing HTML, CSS. and JavaScript.
 
-<table><tr><td width="14%">
+<table><tr><td width="10%">
     <img src="https://www.python.org/static/img/python-logo.png" alt="python logo">
-    </td><td width="14%">
-    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="pandas logo">
-    </td><td width="14%">
-    <img src="https://matplotlib.org/_static/images/logo2.svg" alt="matplotlib logo">
-    </td><td width="14%">
-    <b>ipywidgets</b>
-    </td><td width="14%">
-    <img src="https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg" alt="jupyter logo">
     </td><td width="10%">
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" alt="pandas logo">
+    </td><td width="10%">
+    <img src="https://matplotlib.org/_static/images/logo2.svg" alt="matplotlib logo">
+    </td><td width="7%">
+    <h2>ipywidgets</h2>
+    </td><td width="10%">
+    <img src="https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg" alt="jupyter logo">
+    </td><td width="7%">
     <img src="https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg" alt="voila logo">
-    </td><td width="14%">
-    <img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png" alt="docker logo">
+    </td><td width="10%">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Docker_%28container_engine%29_logo.png" alt="docker logo">
 </td></tr></table>
 
 Got a Python project or Jupyter notebook? Want to turn it into a web applilcation?
@@ -24,7 +24,7 @@ This repository contains easy-to-modify [Python](https://www.python.org/) code. 
 The template was developed so researchers can quickly and easily put their project on the web without getting bogged down in conventional web developement (AJAX, HTML, CSS, JS, etc.). The example notebook uses global temperature data from NASA to show how users can view, search, download, and plot data using an interactive, web enabled tool.
 
 ## How It Works
-Source code is organized in a loose [Model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern. The code is divided into three classes in the "nb" directory:
+Source code is organized in a loose [Model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern. Most of code is divided into three files in the "nb" directory:
 
 - Model: Works with data and storage (file system, database, etc)
 - View:  Builds the user interface (widgets, plots, etc.)
@@ -34,12 +34,12 @@ The Jupyter notebook ('notebook.ipynb") contains just one code cell. This kicks 
 
 The code relies on [widgets](https://en.wikipedia.org/wiki/Graphical_widget) and [callbacks](https://en.wikipedia.org/wiki/Callback_(computer_programming)) methods. Once it's up and running, the code waits for the user to make changes to user interface widgets. But widget updates also work in both directions. When the user interacts with a widget in their browser, an assigned callback method runs. And when some code changes a widget, those changes appear in the browser.
 
-For example, the view object creates a button named "filter_btn_apply". The controller specifies that, when this button is pressed, its "cb_apply_filter()" method should be called ("view.filter_btn_apply.on_click(self.cb_apply_filter)"). The "cb_apply_filter()" method then directs the model to perform the query and then updates the view's output widget, "view.filter_output".
+For example, the view object creates a button named "filter_btn_apply". The controller specifies that, when this button is pressed, its "when_apply_filter()" method should be called ("view.filter_btn_apply.on_click(self.when_apply_filter)"). The "when_apply_filter()" method then directs the model to perform the query and then updates the view's output widget, "view.filter_output".
 
 ## Develop and Test
 
 ### Install dependecies on your workstation
-This project requires Python, Jupyter, and a number of Python packages. One options is to manually install the packages listed under "dependencies" in `environment.yml`. Simply use your OS's package manager and/or the `pip` command. Another option is to use the Andaconda package management system to create an isolated environment. This prevents package installations from affecting your other projects.
+This project requires Python, Jupyter, and a number of Python packages. One options is to manually install the packages listed under "dependencies" in `environment.yml`. Simply use your OS's package manager and/or the `pip` command. The recommended  option is to use the conda package management system to create an isolated environment. This prevents package installations from affecting your other projects.
 
 ### (optional but encouraged): Use Conda
 1. Install [Anaconda](https://www.anaconda.com/products/individual) on your workstation.
