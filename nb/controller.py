@@ -36,11 +36,11 @@ def start(debug=False):
         # Connect UI widgets to callback methods ("cb_...").
         # These methods will be run when user changes a widget.
         # NOTE "on_click()" connects buttons, "observe()" connects other widgets.
-        view.filter_btn_apply.on_click(ctrl.cb_apply_filter)
-        view.filter_ddn_ndisp.observe(ctrl.cb_ndisp_changed, 'value')
-        view.filter_btn_refexp.on_click(ctrl.cb_fill_results_export)
-        view.plot_ddn.observe(ctrl.cb_plot_type_selected, 'value')
-        view.apply.on_click(ctrl.cb_apply_plot_settings)
+        view.filter_btn_apply.on_click(ctrl.when_apply_filter)
+        view.filter_ddn_ndisp.observe(ctrl.when_ndisp_changed, 'value')
+        view.filter_btn_refexp.on_click(ctrl.when_fill_results_export)
+        view.plot_ddn.observe(ctrl.when_plot_type_selected, 'value')
+        view.apply.on_click(ctrl.when_apply_plot_settings)
         logger.info('App running')
     except Exception:
         logger.debug('Exception while setting up callbacks...\n'+traceback.format_exc())
