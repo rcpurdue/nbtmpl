@@ -143,11 +143,11 @@ def start(show_log):
 
     # Build conent (widgets) for each tab
     tab_content = []
-    tab_content.append(view.welcome_content())
-    tab_content.append(view.data_content())
-    tab_content.append(view.selection_content())
-    tab_content.append(view.visualize_content())
-    tab_content.append(view.settings_content())
+    tab_content.append(view.build_welcome_tab())
+    tab_content.append(view.build_data_tab())
+    tab_content.append(view.build_selection_tab())
+    tab_content.append(view.build_visualize_tab())
+    tab_content.append(view.build_settings_tab())
 
     tabs.children = tuple(tab_content)  # Fill tabs with content
 
@@ -164,7 +164,7 @@ def start(show_log):
         display(log_handler.log_output_widget)
 
 
-def section(title, contents):
+def new_section(title, contents):
     '''Utility method that create a collapsible widget container'''
 
     if type(contents) == str:
@@ -175,7 +175,7 @@ def section(title, contents):
     return ret
 
 
-def welcome_content():
+def build_welcome_tab():
     '''Create widgets for introductory tab content'''
     content = []
     content.append(view.section(USING_TITLE, USING_TEXT))
@@ -183,13 +183,13 @@ def welcome_content():
     return widgets.VBox(content)
 
 
-def data_content():
+def build_data_tab():
     '''Show data tab content'''
     view.data_preview_out = widgets.Output()
     return view.section(PREVIEW_SECTION_TITLE, [view.data_preview_out])
 
 
-def selection_content():
+def build_selection_tab():
     '''Create widgets for selection tab content'''
     view.filter_txt_startyr = widgets.Text(description=START_YEAR, value='', placeholder='')
     view.filter_txt_endyr = widgets.Text(description=END_YEAR, value='', placeholder='')
@@ -226,7 +226,7 @@ def selection_content():
     return widgets.VBox(content)
 
 
-def visualize_content():
+def build_visualize_tab():
     '''Create widgets for visualize tab content'''
     content = []
     content.append(view.section(NOTE_TITLE, NOTE_TEXT))
@@ -245,7 +245,7 @@ def visualize_content():
     return widgets.VBox(content)
 
 
-def settings_content():
+def build_settings_tab():
     """Create widgets for settings tab."""
     view.theme = widgets.Dropdown(description=THEME, options=THEMES)
     view.context = widgets.Dropdown(description=CONTEXT, options=CONTEXTS)
