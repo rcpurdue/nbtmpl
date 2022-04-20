@@ -259,8 +259,8 @@ def build_settings_tab():
     view.apply = widgets.Button(description=APPLY)
 
     return(view.new_section(PLOT_SETTINGS_SECTION_TITLE,
-                        [view.theme, view.context, view.fscale, view.spines, view.gridlines,
-                            view.ticks, view.grid, view.figsize1, view.figsize2, view.apply]))
+                            [view.theme, view.context, view.fscale, view.spines, view.gridlines,
+                             view.ticks, view.grid, view.figsize1, view.figsize2, view.apply]))
 
 
 def set_no_data():
