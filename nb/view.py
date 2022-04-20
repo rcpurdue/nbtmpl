@@ -178,15 +178,15 @@ def new_section(title, contents):
 def build_welcome_tab():
     '''Create widgets for introductory tab content'''
     content = []
-    content.append(view.section(USING_TITLE, USING_TEXT))
-    content.append(view.section(SOURCES_TITLE, SOURCES_TEXT))
+    content.append(view.new_section(USING_TITLE, USING_TEXT))
+    content.append(view.new_section(SOURCES_TITLE, SOURCES_TEXT))
     return widgets.VBox(content)
 
 
 def build_data_tab():
     '''Show data tab content'''
     view.data_preview_out = widgets.Output()
-    return view.section(PREVIEW_SECTION_TITLE, [view.data_preview_out])
+    return view.new_section(PREVIEW_SECTION_TITLE, [view.data_preview_out])
 
 
 def build_selection_tab():
@@ -206,7 +206,7 @@ def build_selection_tab():
     section_list.append(view.filter_txt_startyr)
     section_list.append(view.filter_txt_endyr)
     section_list.append(view.filter_btn_apply)
-    content.append(view.section(CRITERIA_TITLE, section_list))
+    content.append(view.new_section(CRITERIA_TITLE, section_list))
 
     # Section: Output (with apply button)
     section_list = []
@@ -216,12 +216,12 @@ def build_selection_tab():
     row.append(widgets.HTML('<div style="text-align: left;">' + OUTPUT_POST + '</div>', layout=view.LO10))
     section_list.append(widgets.HBox(row))
     section_list.append(widgets.HBox([view.filter_output]))  # NOTE Use "layout={'width': '90vw'}" to widen
-    content.append(view.section(OUTPUT_TITLE, section_list))
+    content.append(view.new_section(OUTPUT_TITLE, section_list))
 
     # Section: Export (download)
     section_list = []
     section_list.append(widgets.VBox([view.filter_btn_refexp, view.filter_out_export]))
-    content.append(view.section(EXPORT_TITLE, section_list))
+    content.append(view.new_section(EXPORT_TITLE, section_list))
 
     return widgets.VBox(content)
 
@@ -229,7 +229,7 @@ def build_selection_tab():
 def build_visualize_tab():
     '''Create widgets for visualize tab content'''
     content = []
-    content.append(view.section(NOTE_TITLE, NOTE_TEXT))
+    content.append(view.new_section(NOTE_TITLE, NOTE_TEXT))
     view.plot_ddn = widgets.Dropdown(options=[EMPTY], value=None, disabled=True)
     view.plot_output = widgets.Output()
     section_list = []
@@ -240,7 +240,7 @@ def build_visualize_tab():
     section_list.append(widgets.HBox(row))
     section_list.append(view.plot_ddn)
     section_list.append(view.plot_output)
-    content.append(view.section(PLOT_TITLE, section_list))
+    content.append(view.new_section(PLOT_TITLE, section_list))
 
     return widgets.VBox(content)
 
@@ -258,7 +258,7 @@ def build_settings_tab():
     view.figsize2 = widgets.FloatSlider(description=FIG_HEIGHT, value=4.5)
     view.apply = widgets.Button(description=APPLY)
 
-    return(view.section(PLOT_SETTINGS_SECTION_TITLE,
+    return(view.new_section(PLOT_SETTINGS_SECTION_TITLE,
                         [view.theme, view.context, view.fscale, view.spines, view.gridlines,
                             view.ticks, view.grid, view.figsize1, view.figsize2, view.apply]))
 
