@@ -32,7 +32,7 @@ Source code is organized in a loose [Model-view-controller](https://en.wikipedia
 
 The Jupyter notebook ('notebook.ipynb") contains just one code cell. This kicks off the MVC code and the web app starts running.
 
-The code relies on [widgets](https://en.wikipedia.org/wiki/Graphical_widget) and [callbacks](https://en.wikipedia.org/wiki/Callback_(computer_programming)) methods. Once it's up and running, the code waits for the user to make changes to user interface widgets. But widget updates also work in both directions. When the user interacts with a widget in their browser, an assigned callback method runs. And when some code changes a widget, those changes appear in the browser.
+The code relies on [widgets](https://en.wikipedia.org/wiki/Graphical_widget) and [callback](https://en.wikipedia.org/wiki/Callback_(computer_programming)) methods. Once it's up and running, the code waits for the user to make changes to user interface widgets. But widget updates also work in both directions. When the user interacts with a widget in their browser, an assigned callback method runs. And when some code changes a widget, those changes appear in the browser.
 
 For example, the view object creates a button named "select_btn_apply". The controller specifies that, when this button is pressed, its "when_apply_select()" method should be called ("view.select_btn_apply.on_click(self.when_apply_select)"). The "when_apply_select()" method then directs the model to perform the query and then updates the view's output widget, "view.select_output".
 
