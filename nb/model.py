@@ -52,14 +52,14 @@ def set_disp(data=None, limit=None, wide=False):
         pd.set_option('display.float_format', lambda x: format(x, FLOAT_FORMAT))
 
 
-def clear_filter_results():
+def clear_selection_results():
     """Reset results-tracking attributes."""
     model.results = None
     model.res_count = 0
 
 
-def filter_data(from_year, to_year):
-    '''Use provided values to filter data.'''
+def select_data(from_year, to_year):
+    '''Use provided values to find data.'''
     model.results = data[(data[headers[0]] >= int(from_year)) & (data[headers[0]] <= int(to_year))]
     model.res_count = results.shape[0]
     logger.debug('Results: '+str(res_count))

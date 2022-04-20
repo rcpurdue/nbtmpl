@@ -36,9 +36,9 @@ def start(debug=False):
         # Connect UI widgets to callback methods ("cb_...").
         # These methods will be run when user changes a widget.
         # NOTE "on_click()" connects buttons, "observe()" connects other widgets.
-        view.filter_btn_apply.on_click(ctrl.when_apply_filter)
-        view.filter_ddn_ndisp.observe(ctrl.when_ndisp_changed, 'value')
-        view.filter_btn_refexp.on_click(ctrl.when_fill_results_export)
+        view.select_btn_apply.on_click(ctrl.when_apply_select)
+        view.select_ddn_ndisp.observe(ctrl.when_ndisp_changed, 'value')
+        view.select_btn_refexp.on_click(ctrl.when_fill_results_export)
         view.plot_ddn.observe(ctrl.when_plot_type_selected, 'value')
         view.apply.on_click(ctrl.when_apply_plot_settings)
         logger.info('App running')
@@ -50,11 +50,11 @@ def start(debug=False):
 def when_fill_results_export(_):
     """React to user pressing button to download results."""
     try:
-        # Create link for filter results
+        # Create link for select results
         if model.res_count > 0:
             filename = model.create_download_file(model.results, 'csv')
 
-            with view.filter_out_export:
+            with view.select_out_export:
                 clear_output(wait=True)
                 display(FileLink(filename, result_html_prefix=view.EXPORT_LINK_PROMPT))
 
@@ -63,21 +63,21 @@ def when_fill_results_export(_):
         raise
 
 
-def when_apply_filter(_):
-    """React to apply filter button press."""
+def when_apply_select(_):
+    """React to apply select button press."""
     try:
-        view.filter_out_export.clear_output()
-        model.clear_filter_results()  # New search attempt so reset
-        model.filter_data(view.filter_txt_startyr.value, view.filter_txt_endyr.value)
-        ctrl.refresh_filter_output()
+        view.select_out_export.clear_output()
+        model.clear_selection_results()  # New search attempt so reset
+        model.select_data(view.select_txt_startyr.value, view.select_txt_endyr.value)
+        ctrl.refresh_select_output()
     except Exception:
-        logger.debug('Exception while filtering data...\n'+traceback.format_exc())
+        logger.debug('Exception while selecting data...\n'+traceback.format_exc())
 
 
 def when_ndisp_changed(_):
     """React to user changing result page size."""
     try:
-        ctrl.refresh_filter_output()
+        ctrl.refresh_select_output()
     except Exception:
         logger.debug('Exception while changing number of out lines to display...\n'+traceback.format_exc())
 
@@ -120,22 +120,22 @@ def when_apply_plot_settings(_):
         raise
 
 
-def refresh_filter_output():
-    """Display filter results. Enable/disable plot widget(s)."""
+def refresh_select_output():
+    """Display select results. Enable/disable plot widget(s)."""
 
     if model.res_count > 0:
 
         # Calc set output line limit
-        if view.filter_ddn_ndisp.value == view.ALL:
+        if view.select_ddn_ndisp.value == view.ALL:
             limit = model.res_count
         else:
-            limit = int(view.filter_ddn_ndisp.value)
+            limit = int(view.select_ddn_ndisp.value)
 
         # Display results
 
         model.set_disp(limit=limit)
 
-        with view.filter_output:
+        with view.select_output:
             clear_output(wait=True)
             display(model.results.head(limit))
 

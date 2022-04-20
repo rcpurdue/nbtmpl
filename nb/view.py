@@ -55,7 +55,7 @@ EXPORT_LINK_PROMPT = "Click here to save file: "
 
 # Selection tab
 CRITERIA_TITLE = 'Selection Criteria'
-CRITERIA_APPLY = 'Filter'
+CRITERIA_APPLY = 'Select'
 OUTPUT_TITLE = 'Results'
 OUTPUT_PRE = 'Limit to '
 OUTPUT_POST = 'lines'
@@ -94,13 +94,13 @@ view = sys.modules[__name__]
 # The view's "public" attributes are listed here, with type hints, for quick reference
 
 # Filer ("Selection" tab) controls
-filter_txt_startyr: widgets.Text
-filter_txt_endyr: widgets.Text
-filter_btn_apply: widgets.Button
-filter_ddn_ndisp: widgets.Dropdown
-filter_output: widgets.Output
-filter_btn_refexp: widgets.Button
-filter_out_export: widgets.Output
+select_txt_startyr: widgets.Text
+select_txt_endyr: widgets.Text
+select_btn_apply: widgets.Button
+select_ddn_ndisp: widgets.Dropdown
+select_output: widgets.Output
+select_btn_refexp: widgets.Button
+select_out_export: widgets.Output
 
 # Plot ("Visualize" tab) controls
 plot_ddn: widgets.Dropdown
@@ -191,36 +191,36 @@ def build_data_tab():
 
 def build_selection_tab():
     '''Create widgets for selection tab content'''
-    view.filter_txt_startyr = widgets.Text(description=START_YEAR, value='', placeholder='')
-    view.filter_txt_endyr = widgets.Text(description=END_YEAR, value='', placeholder='')
-    view.filter_btn_apply = widgets.Button(description=CRITERIA_APPLY, icon='filter', layout=view.LO20)
-    view.filter_ddn_ndisp = widgets.Dropdown(options=['25', '50', '100', ALL], layout=view.LO10)
-    view.filter_output = widgets.Output()
-    view.filter_btn_refexp = widgets.Button(description=EXPORT_BUTTON, icon='download',
+    view.select_txt_startyr = widgets.Text(description=START_YEAR, value='', placeholder='')
+    view.select_txt_endyr = widgets.Text(description=END_YEAR, value='', placeholder='')
+    view.select_btn_apply = widgets.Button(description=CRITERIA_APPLY, icon='select', layout=view.LO20)
+    view.select_ddn_ndisp = widgets.Dropdown(options=['25', '50', '100', ALL], layout=view.LO10)
+    view.select_output = widgets.Output()
+    view.select_btn_refexp = widgets.Button(description=EXPORT_BUTTON, icon='download',
                                             layout=view.LO20)
-    view.filter_out_export = widgets.Output(layout={'border': '1px solid black'})
+    view.select_out_export = widgets.Output(layout={'border': '1px solid black'})
     content = []
 
     # Section: Selection criteria
     section_list = []
-    section_list.append(view.filter_txt_startyr)
-    section_list.append(view.filter_txt_endyr)
-    section_list.append(view.filter_btn_apply)
+    section_list.append(view.select_txt_startyr)
+    section_list.append(view.select_txt_endyr)
+    section_list.append(view.select_btn_apply)
     content.append(view.new_section(CRITERIA_TITLE, section_list))
 
     # Section: Output (with apply button)
     section_list = []
     row = []
     row.append(widgets.HTML('<div style="text-align: right;">'+OUTPUT_PRE+'</div>', layout=view.LO15))
-    row.append(view.filter_ddn_ndisp)
+    row.append(view.select_ddn_ndisp)
     row.append(widgets.HTML('<div style="text-align: left;">' + OUTPUT_POST + '</div>', layout=view.LO10))
     section_list.append(widgets.HBox(row))
-    section_list.append(widgets.HBox([view.filter_output]))  # NOTE Use "layout={'width': '90vw'}" to widen
+    section_list.append(widgets.HBox([view.select_output]))  # NOTE Use "layout={'width': '90vw'}" to widen
     content.append(view.new_section(OUTPUT_TITLE, section_list))
 
     # Section: Export (download)
     section_list = []
-    section_list.append(widgets.VBox([view.filter_btn_refexp, view.filter_out_export]))
+    section_list.append(widgets.VBox([view.select_btn_refexp, view.select_out_export]))
     content.append(view.new_section(EXPORT_TITLE, section_list))
 
     return widgets.VBox(content)
@@ -267,6 +267,6 @@ def set_no_data():
     """Indicate there are no results."""
     # NOTE While the other view methods build the UI, this one acts an example of a helper method
 
-    with view.filter_output:
+    with view.select_output:
         clear_output(wait=True)
         display(widgets.HTML(NO_DATA_MSG))
