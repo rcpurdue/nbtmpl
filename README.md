@@ -45,12 +45,11 @@ This project requires Python, Jupyter, and a number of Python packages. One opti
 1. Install [Anaconda](https://www.anaconda.com/products/individual) on your workstation.
 1. At the OS command line, run: `conda env create --file environment.yml`. This creates a conda environment called "nbtmpl" and installs packages into it. Answer "y" to prompts.
 
-### Start Jupyter and Run the Notebook
+### Run the app
 1. Start a command line (terminal) session.
 1. If using conda, enter `conda activate nbtmpl`
-1. Enter `jupyter-lab`. (See [Starting JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html) for more info.
-1. Browse to the "nbtmpl" directory and double click on the `notebook.ipynb` file.
-1. In the "View" menu, select "Open with Voila in New Browser Tab".
+1. Browse to the "nbtmpl" directory
+1. Enter `voila notebook.ipynb`. A browser window shoudd open and run the app. If the app doesn't run enter URL "http://localhost:8866/".
 
 ### Debugging
 
@@ -58,11 +57,22 @@ Run the notebook in Jupyter Lab by opening the "Run" menu and selecting "Restart
 
 For simple bugs, use the log and [print debugging](https://en.wikipedia.org/wiki/Debugging#Techniques) (`logging.debug(...)`) to display values of variables. Specify `log=True` when calling the view's `start()` method.
 
-For more difficult bugs, use Jupyter Lab's [debugger](https://jupyterlab.readthedocs.io/en/stable/user/debugger.html). Set a breakpoint at the "controller.start(..." line in the notebook cell. Using the debugger, run to that breakpoing. Step into that line. Then, set a breakpoitn in the controller or step into the model or viewcode and set breakpoints as needed.
+For more difficult bugs, use Jupyter Lab's [debugger](https://jupyterlab.readthedocs.io/en/stable/user/debugger.html). See below:
 
-## "Access denied" Error
+#### Step 1: Start Jupyter Lab
+1. Start a command line (terminal) session.
+1. If using conda, enter `conda activate nbtmpl`
+1. Enter `jupyter-lab`. (See [Starting JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html) for more info. A browser window should appear. If the displayed page indicates access was denied, close the browser window and start another using one of the other URLs listed in the Jupyter Lab command output. Use a URL starting with "http://localhost...".
+1. Browse to the "nbtmpl" directory and double click on the `notebook.ipynb` file.
 
-A browser window should appear when you run "jupyter-lab" or "jupyter-notebook". However, if the displayed page indicates access was denied, close the browser window and start another using one of the other URLs listed in the jupyter-lab/notebook output. Us a URL starting with "http://localhost...".
+#### Step 2: Debug your code
+1. Enable debugging using the bug buggon near the upper right corner of the notebook cells window.
+1. Reference this [animation]](https://jupyterlab.readthedocs.io/en/stable/user/debugger.html#usage)
+1. First Set a breakpoint at the "controller.start(..." line in the notebook cell.
+1. Using the play button (triangle), run to that breakpoint.
+1. Next, step into that line using the "Step In (F11) button" (next to the word "CALLSTACK", right side of window).
+1. Then, set a breakpoitn in the Controller - or - step into the model or viewcode and set breakpoints as needed.
+
 
 ## (optional) Use composable infrastructure to host app
 
