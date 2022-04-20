@@ -1,4 +1,4 @@
-# nbtmpl - A Self-Conatined Web App Template using Python
+# nbtmpl - A Self-Conatined Web App Template using Python and Voila
 A code example for building web apps without writing HTML, CSS. and JavaScript.
 
 <table><tr><td width="10%">
