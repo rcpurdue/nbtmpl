@@ -172,6 +172,7 @@ def new_section(title, contents):
 
     ret = widgets.Accordion(children=tuple([widgets.VBox(contents)]))
     ret.set_title(0, title)
+    ret.selected_index = 0
     return ret
 
 
