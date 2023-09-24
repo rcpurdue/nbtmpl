@@ -137,10 +137,6 @@ def start(show_log):
 
     tabs = widgets.Tab()
 
-    # Add title text for each tab
-    for i, tab_title in enumerate(TAB_TITLES):
-        tabs.set_title(i, tab_title)
-
     # Build conent (widgets) for each tab
     tab_content = []
     tab_content.append(view.build_welcome_tab())
@@ -150,6 +146,10 @@ def start(show_log):
     tab_content.append(view.build_settings_tab())
 
     tabs.children = tuple(tab_content)  # Fill tabs with content
+
+    # Add title text for each tab
+    for i, tab_title in enumerate(TAB_TITLES):
+        tabs.set_title(i, tab_title)
 
     # Show the app
     header = widgets.HBox([app_title, logo])
